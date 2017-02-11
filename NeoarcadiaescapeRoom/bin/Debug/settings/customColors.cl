@@ -1,0 +1,10 @@
+<Colors>
+	<Color>
+		<Name>Custom</Name>
+		<Values>255/124/253/73</Values>
+	</Color>
+	<Color>
+	<Name>Yolo</Name>
+		<Values>50/133/133/133</Values>
+	</Color>
+</Colors>

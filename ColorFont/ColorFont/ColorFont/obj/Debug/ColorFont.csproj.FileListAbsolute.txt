@@ -1,0 +1,16 @@
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\bin\Debug\ColorFont.dll
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\bin\Debug\ColorFont.pdb
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorPicker.baml
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFontChooser.g.cs
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFontDialog.g.cs
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorPicker.g.cs
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFont_MarkupCompile.cache
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFont_MarkupCompile.lref
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFontChooser.baml
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFontDialog.baml
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFont.g.resources
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFont.Properties.Resources.resources
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFont.csproj.GenerateResource.Cache
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFont.dll
+D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\ColorFont.pdb

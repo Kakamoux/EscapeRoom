@@ -1,0 +1,168 @@
+﻿<Window x:Class="NeoarcadiaescapeRoom.NewGameSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:ColorFont;assembly=ColorFont" 
+        Title="NewGameSettings" Height="630" Width="540" Initialized="Window_Initialized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Timer"/>
+            <Label Content="Setting Name"/>
+            <Label Content="Progress Max"/>
+
+            <Label Content="Background Music"/>
+            <Label Content="Clue Auto Delete"/>
+            <Label Content="Game over screen"/>
+            <Label Content="Font config"/>
+            <Label Content="Background color"/>
+            <Label Content="Progress BG color"/>
+            <Label Content="Progress FG color"/>
+            <Label Content="Background image"/>
+            <Label Content="Use BG image"/>
+            <Label Content="Add Time Edit Sound"/>
+            <Label Content="Add Time Edit Blink"/>
+            <Label Content="Add Blink duration (s)"/>
+            <Label Content="Add Blink interval (ms)"/>
+            <Label Content="RM Time Edit Sound"/>
+            <Label Content="RM Time Edit Blink"/>
+            <Label Content="RM Blink duration (s)"/>
+            <Label Content="RM Blink interval (ms)"/>
+
+
+
+            <!--<Label Content="Progress Style"/>-->
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <xctk:IntegerUpDown x:Name="TimerControl" DefaultValue="60" Margin="5" DisplayDefaultValueOnEmptyText="True"/>
+            <TextBox x:Name="SettingNameControl" Margin="5,1,5,0"/>
+            <xctk:IntegerUpDown x:Name="ProgressMaxControl" DefaultValue="10" Margin="5,5,5,0" DisplayDefaultValueOnEmptyText="True" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="BgdMusic" Margin="5,10,5,0" IsEnabled="False"/>
+                <Label Grid.Column="1" Content="Loop"></Label>
+                <CheckBox x:Name="bgdMLoop" Grid.Column="2" Margin="5,10,5,0" ></CheckBox>
+                <Button Grid.Column="3" Content="browse" Margin="5,10,5,0" Click="Button_Click"></Button>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <xctk:IntegerUpDown Grid.Column="0" x:Name="deleteTime" Minimum="0" DefaultValue="10" Margin="5,5,5,0" DisplayDefaultValueOnEmptyText="True" />
+                <CheckBox x:Name="deleteAuto" Grid.Column="2" Margin="5,10,5,0" ></CheckBox>
+                <Label  Grid.Column="1" Content="Enabled"></Label>
+
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="GameOverScreen" Margin="5,10,5,0" IsEnabled="False"/>
+                <Button Grid.Column="3" Content="browse" Margin="5,10,5,0" Click="Button_Click_1" ></Button>
+            </Grid>
+            <Button x:Name="fontCfg" Content="Config font" Margin="5,5,5,5" Click="fontCfg_Click"/>
+
+
+            <local:ColorPicker  x:Name="colorPicker" Height="20" ColorChanged="colorPicker_ColorChanged" Width="Auto" Margin="5,2,2,2" />
+            <local:ColorPicker x:Name="progressBG" Height="20" ColorChanged="colorPicker_ColorChanged" Width="Auto" Margin="5,2,2,2" />
+            <local:ColorPicker x:Name="progressFG" Height="20" ColorChanged="colorPicker_ColorChanged" Width="Auto" Margin="5,2,2,2" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="bgImage" Margin="5,5,2,2" IsEnabled="False"/>
+                <Button Grid.Column="3" Content="browse" Margin="5,5,2,2" Click="Button_Click_2"  ></Button>
+            </Grid>
+            <CheckBox x:Name="checkUseBgImg"  Content="Use background image" Checked="checkUseBgImg_Checked" Unchecked="checkUseBgImg_Unchecked"/>
+            <!--<Button x:Name="progressCfg" Content="Progress Style" Margin="5,5,5,5" Click="progressCfg_Click"/>-->
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="TimeEditSelectedSound" Margin="5,10,5,0" IsEnabled="True"/>
+                <Button Grid.Column="3" Content="browse" Margin="5,10,5,0" Click="Button_Click_3" ></Button>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <local:ColorPicker Grid.Column="2" x:Name="editBlinkColor" Height="20" ColorChanged="editBlinkColor_ColorChanged" Width="Auto" Margin="5,2,2,2" />
+                <CheckBox x:Name="timeEditBlinkCheck" Grid.Column="1" Margin="5,10,5,0" ></CheckBox>
+                <Label  Grid.Column="0" Content="Blink on Edit"></Label>
+
+            </Grid>
+            <xctk:IntegerUpDown x:Name="BlinkDurationText" DefaultValue="60" Margin="5" DisplayDefaultValueOnEmptyText="True"/>
+            <xctk:IntegerUpDown x:Name="BlinkIntervalText" DefaultValue="60" Margin="5" DisplayDefaultValueOnEmptyText="True"/>
+            
+            <!---->
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="TimeEditSelectedSound2" Margin="5,10,5,0" IsEnabled="True"/>
+                <Button Grid.Column="3" Content="browse" Margin="5,10,5,0" Click="Button_Click_4" ></Button>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <local:ColorPicker Grid.Column="2" x:Name="editBlinkColor2" Height="20" ColorChanged="editBlinkColor_ColorChanged" Width="Auto" Margin="5,2,2,2" />
+                <CheckBox x:Name="timeEditBlinkCheck2" Grid.Column="1" Margin="5,10,5,0" ></CheckBox>
+                <Label  Grid.Column="0" Content="Blink on Edit"></Label>
+
+            </Grid>
+            <xctk:IntegerUpDown x:Name="BlinkDurationText2" DefaultValue="60" Margin="5" DisplayDefaultValueOnEmptyText="True"/>
+            <xctk:IntegerUpDown x:Name="BlinkIntervalText2" DefaultValue="60" Margin="5" DisplayDefaultValueOnEmptyText="True"/>
+
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" x:Name="settingsOk" Content="Ok" Click="settingsOk_Click" />
+            <Button  Grid.Column="0" x:Name="settingsCancel" Content="Cancel" IsCancel="True"/>
+        </Grid>
+        
+
+    </Grid>
+</Window>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="NeoarcadiaescapeRoom.FontConfigurator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FontConfigurator" Height="300" Width="300" Initialized="Window_Initialized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label x:Name="TNF"   Content="Team Name Font"></Label>
+            <Label x:Name="TNLF"  Content="Team Name Label Font"></Label>
+            <Label x:Name="ICF"   Content="Indice Count Font"></Label>
+            <Label x:Name="ICLF"  Content="Indice Count Label Font"></Label>
+            <Label x:Name="PLF"   Content="Progress Label Font"></Label>
+            <Label x:Name="TF"    Content="Timer Font"></Label>
+            <Label x:Name="CF"    Content="Clue Font"></Label>
+           
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Button Margin="2,4,2,2" x:Name="TNFB" Content="Browse" Click="TNFB_Click"></Button>
+            <Button Margin="2,4,2,2" x:Name="TNLFB" Content="Browse" Click="TNLFB_Click"></Button>
+            <Button Margin="2,4,2,2" x:Name="ICFB" Content="Browse" Click="ICFB_Click"></Button>
+            <Button Margin="2,4,2,2" x:Name="ICLFB" Content="Browse" Click="ICLFB_Click"></Button>
+            <Button Margin="2,4,2,2" x:Name="PLFB" Content="Browse" Click="PLFB_Click"></Button>
+            <Button Margin="2,4,2,2" x:Name="TFB"  Content="Browse" Click="TFB_Click"></Button>
+            <Button Margin="2,4,2,2" x:Name="CFB"  Content="Browse" Click="CFB_Click"></Button>
+            
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" x:Name="settingsOk" Content="Ok" Click="settingsOk_Click" />
+            <Button  Grid.Column="0" x:Name="settingsCancel" Content="Cancel" IsCancel="True"/>
+        </Grid>
+    </Grid>
+</Window>
