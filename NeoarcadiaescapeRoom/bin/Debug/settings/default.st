@@ -1,6 +1,5 @@
 <Settings>
   <Name>N/A</Name>
-  <ProgressMax>10</ProgressMax>
   <Timer>60</Timer>
   <BackgroundMusic>
   </BackgroundMusic>
@@ -14,62 +13,57 @@
   <BackgroundImage>
   </BackgroundImage>
   <UseBackgroundImage>False</UseBackgroundImage>
-  <ProgressStyle>Style-default</ProgressStyle>
-  <ProgressForegroundName>Black</ProgressForegroundName>
-  <ProgressForeground>255/0/0/0</ProgressForeground>
-  <ProgressBackgroundName>Black</ProgressBackgroundName>
-  <ProgressBackground>255/0/0/0</ProgressBackground>
   <CF>
-    <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
     <FONTSTYLE>Normal</FONTSTYLE>
     <FONTWEIGHT>Normal</FONTWEIGHT>
     <FONTSTRETCH>Normal</FONTSTRETCH>
     <BRUSH>255/0/0/0</BRUSH>
   </CF>
+  <SF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </SF>
   <TF>
-    <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
     <FONTSTYLE>Normal</FONTSTYLE>
     <FONTWEIGHT>Normal</FONTWEIGHT>
     <FONTSTRETCH>Normal</FONTSTRETCH>
     <BRUSH>255/0/0/0</BRUSH>
   </TF>
-  <PLF>
-    <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
-    <FONTSTYLE>Normal</FONTSTYLE>
-    <FONTWEIGHT>Normal</FONTWEIGHT>
-    <FONTSTRETCH>Normal</FONTSTRETCH>
-    <BRUSH>255/0/0/0</BRUSH>
-  </PLF>
   <ICLF>
-    <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
     <FONTSTYLE>Normal</FONTSTYLE>
     <FONTWEIGHT>Normal</FONTWEIGHT>
     <FONTSTRETCH>Normal</FONTSTRETCH>
     <BRUSH>255/0/0/0</BRUSH>
   </ICLF>
   <ICF>
-    <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
     <FONTSTYLE>Normal</FONTSTYLE>
     <FONTWEIGHT>Normal</FONTWEIGHT>
     <FONTSTRETCH>Normal</FONTSTRETCH>
     <BRUSH>255/0/0/0</BRUSH>
   </ICF>
   <TNLF>
-    <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
     <FONTSTYLE>Normal</FONTSTYLE>
     <FONTWEIGHT>Normal</FONTWEIGHT>
     <FONTSTRETCH>Normal</FONTSTRETCH>
     <BRUSH>255/0/0/0</BRUSH>
   </TNLF>
   <TNF>
-    <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
     <FONTSTYLE>Normal</FONTSTYLE>
     <FONTWEIGHT>Normal</FONTWEIGHT>
     <FONTSTRETCH>Normal</FONTSTRETCH>
@@ -77,13 +71,15 @@
   </TNF>
   <TimerEditColorName>Black</TimerEditColorName>
   <TimerEditColor>255/0/0/0</TimerEditColor>
-  <TimerEditSound></TimerEditSound>
+  <TimerEditSound>
+  </TimerEditSound>
   <BlinkOnTimeEdit>True</BlinkOnTimeEdit>
   <BlinkDuration>2</BlinkDuration>
   <BlinkInterval>500</BlinkInterval>
-  <TimerEditColorName2>Blue</TimerEditColorName2>
-  <TimerEditColor2>255/0/0/255</TimerEditColor2>
-  <TimerEditSound2>D:\Documents\Datas\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\NeoarcadiaescapeRoom\bin\Debug\sfx\applause2_x - Copie (2).wav</TimerEditSound2>
+  <TimerEditColorName2>Black</TimerEditColorName2>
+  <TimerEditColor2>255/0/0/0</TimerEditColor2>
+  <TimerEditSound2>
+  </TimerEditSound2>
   <BlinkOnTimeEdit2>True</BlinkOnTimeEdit2>
   <BlinkDuration2>2</BlinkDuration2>
   <BlinkInterval2>500</BlinkInterval2>

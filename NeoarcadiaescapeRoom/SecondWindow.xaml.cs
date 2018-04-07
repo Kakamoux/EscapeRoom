@@ -41,13 +41,13 @@ namespace NeoarcadiaescapeRoom
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            /*Topmost = true;
-             Left = workingArea.Left;
-              Top = workingArea.Top;
-              Width = workingArea.Width;
-              Height = workingArea.Height;
-              WindowState = WindowState.Maximized;
-              WindowStyle = WindowStyle.None;*/
+            Topmost = true;
+            Left = workingArea.Left;
+            Top = workingArea.Top;
+            Width = workingArea.Width;
+            Height = workingArea.Height;
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
         }
 
         internal void GameOver()
