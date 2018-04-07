@@ -1,0 +1,86 @@
+<Settings>
+  <Name>zerzere</Name>
+  <Timer>60</Timer>
+  <BackgroundMusic>
+  </BackgroundMusic>
+  <LoopBackgroundMusic>True</LoopBackgroundMusic>
+  <DeleteAuto>False</DeleteAuto>
+  <DeleteTime>10</DeleteTime>
+  <GameOverScreen>
+  </GameOverScreen>
+  <BackgroundColorName>Aquamarine</BackgroundColorName>
+  <BackgroundColor>255/127/255/212</BackgroundColor>
+  <BackgroundImage>
+  </BackgroundImage>
+  <UseBackgroundImage>False</UseBackgroundImage>
+  <CF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </CF>
+  <SF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </SF>
+  <TF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </TF>
+  <ICLF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </ICLF>
+  <ICF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </ICF>
+  <TNLF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </TNLF>
+  <TNF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/0</BRUSH>
+  </TNF>
+  <TimerEditColorName>Black</TimerEditColorName>
+  <TimerEditColor>255/0/0/0</TimerEditColor>
+  <TimerEditSound>
+  </TimerEditSound>
+  <BlinkOnTimeEdit>True</BlinkOnTimeEdit>
+  <BlinkDuration>2</BlinkDuration>
+  <BlinkInterval>500</BlinkInterval>
+  <TimerEditColorName2>Black</TimerEditColorName2>
+  <TimerEditColor2>255/0/0/0</TimerEditColor2>
+  <TimerEditSound2>
+  </TimerEditSound2>
+  <BlinkOnTimeEdit2>True</BlinkOnTimeEdit2>
+  <BlinkDuration2>2</BlinkDuration2>
+  <BlinkInterval2>500</BlinkInterval2>
+</Settings>

@@ -1,0 +1,17 @@
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\bin\Release\ColorFont.dll
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\bin\Release\ColorFont.pdb
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorPicker.baml
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFontChooser.g.cs
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFontDialog.g.cs
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorPicker.g.cs
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont_MarkupCompile.cache
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont_MarkupCompile.lref
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFontChooser.baml
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFontDialog.baml
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont.g.resources
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont.Properties.Resources.resources
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont.csproj.GenerateResource.cache
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont.csproj.CoreCompileInputs.cache
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont.dll
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Release\ColorFont.pdb

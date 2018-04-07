@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Spirits\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_NeoarcadiaescapeRoom.-1283836211.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Spirits\Documents\Workspace\EscapeRoom" t="IncludeFlat">
+      <e p="ColorFont\ColorFont\ColorFont" t="IncludeRecursive">
+        <e p="AvailableColors.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ColorFont.csproj" t="IncludeRecursive" />
+        <e p="ColorFontChooser.xaml" t="Include" />
+        <e p="ColorFontChooser.xaml.cs" t="Include" />
+        <e p="ColorFontDialog.xaml" t="Include" />
+        <e p="ColorFontDialog.xaml.cs" t="Include" />
+        <e p="ColorPicker.xaml" t="Include" />
+        <e p="ColorPicker.xaml.cs" t="Include" />
+        <e p="ColorPickerViewModel.cs" t="Include" />
+        <e p="FontColor.cs" t="Include" />
+        <e p="FontInfo.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="colorfont_icon.png" t="Include" />
+        </e>
+      </e>
+      <e p="NeoarcadiaescapeRoom" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="FontConfigurator.xaml" t="Include" />
+        <e p="FontConfigurator.xaml.cs" t="Include" />
+        <e p="MainWindow.xaml" t="Include" />
+        <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="MusicPlayer.cs" t="Include" />
+        <e p="NeoarcadiaescapeRoom.csproj" t="IncludeRecursive" />
+        <e p="NeoarcadiaescapeRoom_CléTemporaire.pfx" t="Include" />
+        <e p="NewGameSettings.xaml" t="Include" />
+        <e p="NewGameSettings.xaml.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="ProgressBarStyles.xaml" t="Include" />
+        <e p="ProgressStyleSelection.xaml" t="Include" />
+        <e p="ProgressStyleSelection.xaml.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="SecondWindow.xaml" t="Include" />
+        <e p="SecondWindow.xaml.cs" t="Include" />
+        <e p="Settings.cs" t="Include" />
+        <e p="SettingSelect.xaml" t="Include" />
+        <e p="SettingSelect.xaml.cs" t="Include" />
+      </e>
+      <e p="NeoarcadiaescapeRoom.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
