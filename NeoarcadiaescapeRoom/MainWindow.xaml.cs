@@ -1,259 +1,147 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
+using System.Windows.Forms;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Xceed.Wpf.Toolkit;
+using Application = System.Windows.Application;
+using Button = System.Windows.Controls.Button;
+using ColorPicker = ColorFont.ColorPicker;
+using Image = System.Windows.Controls.Image;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
+using WindowState = System.Windows.WindowState;
 
 namespace NeoarcadiaescapeRoom
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    ///   Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public static Settings SETTINGS = new Settings("default.st");
-        private int _timer =60;
-        private object o = new object();
 
-        private TimeSpan _timerTimeSpan;
+        private readonly MusicPlayer _player = new MusicPlayer();
+        private readonly MusicPlayer _playerBackground = new MusicPlayer();
+        private readonly MusicPlayer _playerSFX = new MusicPlayer();
+        private readonly object o = new object();
+        private int _clueFontSize = 120;
+
+        private int _dirtySecondCounter;
         private DispatcherTimer _dispatcherTimer;
-        private string _timerString = "yolo";
-        private bool isPaused = false;
-        private string _selectedSound = String.Empty;
 
         private int _hubFontSize = 32;
 
         private int _timerFontSize = 120;
-        private int _clueFontSize = 120;
-        
-        MusicPlayer _player = new MusicPlayer();
-        MusicPlayer _playerBackground = new MusicPlayer();
-        MusicPlayer _playerSFX = new MusicPlayer();
 
-
-        #region propfull
-        public int ClueFontSize
-        {
-            get { return _clueFontSize; }
-            set { _clueFontSize = value; if (gameWindow != null) gameWindow.SClue.FontSize = _clueFontSize; }
-        }
-
-
-        
-
-
-        public int TimerFontSize
-        {
-            get { return _timerFontSize; }
-            set { _timerFontSize = value; if (gameWindow != null) gameWindow.STimer.FontSize = value; }
-        }
-        
-
-        public int HubFontSize
-        {
-            get { return _hubFontSize; }
-            set { _hubFontSize = value; if (gameWindow != null) { gameWindow.STeamNameLabel.FontSize = _hubFontSize; gameWindow.SCurrentProgressLabel.FontSize = _hubFontSize; gameWindow.SCurrentClueLabel.FontSize = _hubFontSize; gameWindow.SCurrentClue.FontSize = _hubFontSize; gameWindow.STeamName.FontSize = _hubFontSize; } }
-        }
-        
-
-        public string SelectedSound
-        {
-            get { return _selectedSound; }
-            set { _selectedSound = value; }
-        }
-        
-
-        public string TimerString
-        {
-            get { return _timerString; }
-            set { _timerString = value; }
-        }
-        
-
-        public TimeSpan TimerTimeSpan
-        {
-            get { return _timerTimeSpan; }
-            set { _timerTimeSpan = value; }
-        }
-        
-
-        public int Timer
-        {
-            get { return _timer; }
-            set { _timer = value; }
-        }
-
-        private string _lastClue;
-
-        public string LastClue
-        {
-            get { return _lastClue; }
-            set { _lastClue = value; }
-        }
-
-        private int _currentClue = 0;
-
-        public int CurrentClue
-        {
-            get { return _currentClue; }
-            set { _currentClue = value; }
-        }
-
-        private int _progressMax = 10;
-
-        public int ProgressMax
-        {
-            get { return _progressMax; }
-            set { _progressMax = value; }
-        }
-
-        private int _currentProgress = 0;
-
-        public int CurrentProgress
-        {
-            get { return _currentProgress; }
-            set { _currentProgress = value; }
-        }
-
-        private string _teamName;
-
-        public string TeamName
-        {
-            get { return _teamName; }
-            set { _teamName = value; }
-        }
-
-        #endregion
-
-        private SecondWindow gameWindow = null;
-        
-        
+        private SecondWindow gameWindow;
+        private bool isPaused;
 
         public MainWindow()
         {
-
-           
-
             InitializeComponent();
-            this.DataContext = this;
+            DataContext = this;
 
-            DirectoryInfo d = new DirectoryInfo(Environment.CurrentDirectory+"/clueSounds");//Assuming Test is your Folder
-            FileInfo[] Files = d.GetFiles("*.wav").Union(d.GetFiles("*.mp3")).ToArray() ; //Getting Text files
-           
-            foreach (FileInfo file in Files)
-            {
-                SoundList.Items.Add(file.Name);
-            }
+            var d = new DirectoryInfo(Environment.CurrentDirectory + "/clueSounds"); //Assuming Test is your Folder
+            var Files = d.GetFiles("*.wav").Union(d.GetFiles("*.mp3")).ToArray(); //Getting Text files
 
+            foreach (var file in Files) SoundList.Items.Add(file.Name);
         }
 
         private void StartGame()
         {
-           
-          
-                
-                StopGame.IsEnabled = true;
-                PauseGame.IsEnabled = true;
-                Send.IsEnabled = true;
-                Delete.IsEnabled = true;
-                Question.IsEnabled = true;
-                ProgressAdd.IsEnabled = true;
-                ProgressRemove.IsEnabled = true;
-                addMinute.IsEnabled = true;
-                removeMinute.IsEnabled = true;
-                BrowseBgdMusic.IsEnabled = true;
-                BackgroundMusicLabel.Content = SETTINGS.BackgroungMusic;
-                LoopBgdM.IsEnabled = true;
-                LoopBgdM.IsChecked = SETTINGS.LoopBgdMusic;
-                StopBgdMusic.IsEnabled = true;
-                deleteTime.IsEnabled = true;
-                deleteAuto.IsEnabled = true;
-                deleteTime.Value = SETTINGS.DeleteTime;
-                deleteAuto.IsChecked = SETTINGS.DeleteAuto;
-                AddCluePicture.IsEnabled = true;
-                RemoveCluePicture.IsEnabled = true;
-                ClearCluePicture.IsEnabled = true;
-                CluePictures.IsEnabled = true;
-                GameOverScreenChanged.IsEnabled = true;
-                fontConfig.IsEnabled = true;
-                GameOverScreenLabel.Content = SETTINGS.GameOverScreen;
-                BgimageLabel.Content = SETTINGS.BgImage;
-                browseBgImg.IsEnabled=true;
-                checkUseBgImg.IsChecked = SETTINGS.UseBgImage ? true : false;
-                checkUseBgImg.IsEnabled = true;
-                colorPicker.IsEnabled = true;
-                progressFG.IsEnabled = true;
-                progressBG.IsEnabled = true;
-                colorPicker.setSelectedColor(SETTINGS.BgColor.Name);
-                progressFG.setSelectedColor(SETTINGS.ProgressForeground.Name);
-                progressBG.setSelectedColor(SETTINGS.ProgressBackground.Name);
+            StopGame.IsEnabled = true;
+            PauseGame.IsEnabled = true;
+            Send.IsEnabled = true;
+            Delete.IsEnabled = true;
+            Question.IsEnabled = true;
+            addMinute.IsEnabled = true;
+            removeMinute.IsEnabled = true;
+            BrowseBgdMusic.IsEnabled = true;
+            BackgroundMusicLabel.Content = SETTINGS.BackgroungMusic;
+            LoopBgdM.IsEnabled = true;
+            LoopBgdM.IsChecked = SETTINGS.LoopBgdMusic;
+            StopBgdMusic.IsEnabled = true;
+            deleteTime.IsEnabled = true;
+            deleteAuto.IsEnabled = true;
+            deleteTime.Value = SETTINGS.DeleteTime;
+            deleteAuto.IsChecked = SETTINGS.DeleteAuto;
+            AddCluePicture.IsEnabled = true;
+            RemoveCluePicture.IsEnabled = true;
+            ClearCluePicture.IsEnabled = true;
+            CluePictures.IsEnabled = true;
+            GameOverScreenChanged.IsEnabled = true;
+            fontConfig.IsEnabled = true;
+            GameOverScreenLabel.Content = SETTINGS.GameOverScreen;
+            BgimageLabel.Content = SETTINGS.BgImage;
+            browseBgImg.IsEnabled = true;
+            checkUseBgImg.IsChecked = SETTINGS.UseBgImage ? true : false;
+            checkUseBgImg.IsEnabled = true;
+            colorPicker.IsEnabled = true;
+            colorPicker.setSelectedColor(SETTINGS.BgColor.Name);
+            DefaultScore.IsEnabled = false;
+            RemovePointCheckBox.IsEnabled = true;
 
 
-                foreach (Button v in sfxPanel.Children)
+            foreach (Button v in sfxPanel.Children) v.IsEnabled = true;
+
+            foreach (var v in ScoringPannel.Children)
+                if (v is Button)
+                    (v as Button).IsEnabled = true;
+
+            Rectangle workingArea;
+            if (SystemInformation.MonitorCount > 1)
+                workingArea = Screen.AllScreens[1].WorkingArea;
+            else
+                workingArea = Screen.AllScreens[0].WorkingArea;
+            gameWindow = new SecondWindow(this, workingArea);
+
+
+            //init timer
+            _dirtySecondCounter = 0;
+            TimerTimeSpan = TimeSpan.FromMinutes(SETTINGS.Timer);
+            gameWindow.STimer.Content = TimerTimeSpan.ToString("c");
+            gameWindow.SScore.Content = "Score : " + DefaultScore.Value;
+            MScore.Content = DefaultScore.Value;
+            gameWindow.STeamName.Content = SETTINGS.SettingName;
+            _dispatcherTimer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                lock (o)
                 {
-                    v.IsEnabled = true;
-                }
-        
-                System.Drawing.Rectangle workingArea;
-                if (System.Windows.Forms.SystemInformation.MonitorCount > 1)
-                {
+                    gameWindow.STimer.Content = TimerTimeSpan.ToString("c");
+                    MTimer.Content = gameWindow.STimer.Content;
 
+                    if (_dirtySecondCounter % 60 == 0 && _dirtySecondCounter != 0) UpdateScore(-1);
 
-                      workingArea = System.Windows.Forms.Screen.AllScreens[1].WorkingArea;
-             
-           
-            
-                }else
-                {
-                    workingArea = System.Windows.Forms.Screen.AllScreens[0].WorkingArea;
-                }
-                gameWindow = new SecondWindow(this, workingArea);
-
-
-                //init timer
-
-                _timerTimeSpan = TimeSpan.FromMinutes(SETTINGS.Timer);
-                gameWindow.STimer.Content = _timerTimeSpan.ToString("c");
-                gameWindow.STeamName.Content = SETTINGS.SettingName;
-                _dispatcherTimer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-                {
-                    lock (o)
+                    if (TimerTimeSpan == TimeSpan.Zero)
                     {
-                        
-                        gameWindow.STimer.Content = _timerTimeSpan.ToString("c");
-                        MTimer.Content = gameWindow.STimer.Content;
-                        if (_timerTimeSpan == TimeSpan.Zero) { _dispatcherTimer.Stop(); gameWindow.GameOver(); disableControl(); }
-                        _timerTimeSpan = _timerTimeSpan.Add(TimeSpan.FromSeconds(-1));
+                        _dispatcherTimer.Stop();
+                        gameWindow.GameOver();
+                        disableControl();
                     }
-                }, Application.Current.Dispatcher);
 
+                    _dirtySecondCounter++;
 
-                if(SETTINGS.BackgroungMusic!=String.Empty)
-                {
-                    _playerBackground.Open(SETTINGS.BackgroungMusic);
-                    _playerBackground.Play(SETTINGS.LoopBgdMusic);
+                    TimerTimeSpan = TimerTimeSpan.Add(TimeSpan.FromSeconds(-1));
                 }
-                gameWindow.Show();
-                _dispatcherTimer.Start();
-                
-          
+            }, Application.Current.Dispatcher);
 
 
-         
+            if (SETTINGS.BackgroungMusic != string.Empty)
+            {
+                _playerBackground.Open(SETTINGS.BackgroungMusic);
+                _playerBackground.Play(SETTINGS.LoopBgdMusic);
+                _playerBackground.Play(SETTINGS.LoopBgdMusic);
+            }
+
+            ClueFontSizeControl.Value = (int) SETTINGS.CF.Size;
+            ScoreFontSizeControl.Value = (int) SETTINGS.SF.Size;
+            TimerFontSizeControl.Value = (int) SETTINGS.TF.Size;
+            gameWindow.Show();
+            _dispatcherTimer.Start();
         }
 
         private void disableControl()
@@ -261,12 +149,10 @@ namespace NeoarcadiaescapeRoom
             BrowseBgdMusic.IsEnabled = false;
             Send.IsEnabled = false;
             Delete.IsEnabled = false;
-           
-            ProgressAdd.IsEnabled = false;
-            ProgressRemove.IsEnabled = false;
+
+            RemovePointCheckBox.IsEnabled = false;
             PauseGame.IsEnabled = false;
-        
-        
+            DefaultScore.IsEnabled = true;
             addMinute.IsEnabled = false;
             removeMinute.IsEnabled = false;
             LoopBgdM.IsEnabled = false;
@@ -283,47 +169,52 @@ namespace NeoarcadiaescapeRoom
             browseBgImg.IsEnabled = false;
             checkUseBgImg.IsEnabled = false;
             colorPicker.IsEnabled = false;
-            progressFG.IsEnabled = false;
-            progressBG.IsEnabled = false;
+
+            foreach (var v in ScoringPannel.Children)
+                if (v is Button)
+                    (v as Button).IsEnabled = false;
+        }
+
+        internal void ScoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+
+            UpdateScore(int.Parse(btn.Tag.ToString()));
+        }
+
+        internal void Victory_Click(object sender, RoutedEventArgs e)
+        {
+            PauseGame_Click(sender, e);
+
+            UpdateScore(20);
+        }
+
+        private void UpdateScore(int amount)
+        {
+            var score = int.Parse(MScore.Content.ToString()) + amount;
+
+            gameWindow.SScore.Content = "Score : " + score;
+            MScore.Content = score;
         }
 
         internal void NewGame_Click(object sender, RoutedEventArgs e)
         {
-
             Reset();
 
-            SettingSelect n = new SettingSelect();
+            var n = new SettingSelect();
             n.ShowDialog();
-            if(n.DialogResult.HasValue && n.DialogResult.Equals(true))
+            if (n.DialogResult.HasValue && n.DialogResult.Equals(true))
             {
                 n.Close();
                 NewGame.IsEnabled = false;
                 StartGame();
             }
-
-        }
-
-        private void ProgressAdd_Click(object sender, RoutedEventArgs e)
-        {
-            CurrentProgress++;
-            CurrentProgressLabel.Content = CurrentProgress;
-
-            
-            gameWindow.ProgressBar.Value++;
-            
-            
-            
-        }
-
-        private void ProgressRemove_Click(object sender, RoutedEventArgs e)
-        {
-            CurrentProgress--;
-            CurrentProgressLabel.Content = CurrentProgress;
-            gameWindow.ProgressBar.Value--;
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
+            if ((bool) RemovePointCheckBox.IsChecked) UpdateScore(-2);
+
             LastClue = Question.Text;
             gameWindow.SClue.Text = LastClue;
             CurrentClue++;
@@ -335,44 +226,38 @@ namespace NeoarcadiaescapeRoom
             setPlayerImage(true);
             setPlayerImage();
 
-            if (SelectedSound != String.Empty)
+            if (SelectedSound != string.Empty)
             {
-
-             
-                    _player.Open("clueSounds/" + SelectedSound);
-                    _player.Play();
-                
+                _player.Open("clueSounds/" + SelectedSound);
+                _player.Play();
             }
+
             if (SETTINGS.DeleteAuto)
                 setTimeout(delayedClueDelete, SETTINGS.DeleteTime);
         }
 
         private void delayedClueDelete()
         {
-           
             Delete_Click(null, null);
         }
 
-        
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            
-            LastClue = String.Empty;
+            LastClue = string.Empty;
             gameWindow.SClue.Text = LastClue;
             LastClueLabel.Content = "";
             setPlayerImage(true);
         }
 
-      
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-           var workingArea = System.Windows.Forms.Screen.AllScreens[0].WorkingArea;
+            var workingArea = Screen.AllScreens[0].WorkingArea;
 
-          Width = workingArea.Width;
-          Height = workingArea.Height;
-          WindowState = System.Windows.WindowState.Maximized;
+            Width = workingArea.Width;
+            Height = workingArea.Height;
+            WindowState = WindowState.Maximized;
         }
 
         internal void Reset()
@@ -382,13 +267,10 @@ namespace NeoarcadiaescapeRoom
             Send.IsEnabled = false;
             Delete.IsEnabled = false;
             Question.IsEnabled = false;
-            ProgressAdd.IsEnabled = false;
-            ProgressRemove.IsEnabled = false;
             PauseGame.IsEnabled = false;
             StopGame.IsEnabled = false;
             NewGame.IsEnabled = true;
             LastClueLabel.Content = "";
-            CurrentProgressLabel.Content = "0";
             CurrentClueLabel.Content = "0";
             addMinute.IsEnabled = false;
             removeMinute.IsEnabled = false;
@@ -403,20 +285,14 @@ namespace NeoarcadiaescapeRoom
             CluePictures.IsEnabled = false;
             GameOverScreenChanged.IsEnabled = false;
             fontConfig.IsEnabled = false;
-            BgimageLabel.Content="";
-            browseBgImg.IsEnabled=false;
-            checkUseBgImg.IsEnabled=false;
+            BgimageLabel.Content = "";
+            browseBgImg.IsEnabled = false;
+            checkUseBgImg.IsEnabled = false;
             colorPicker.IsEnabled = false;
-            progressFG.IsEnabled = false;
-            progressBG.IsEnabled = false;
             GameOverScreenLabel.Content = "";
             CluePictures.Items.Clear();
 
-            foreach(Button v in sfxPanel.Children)
-            {
-                v.IsEnabled = false;
-            }
-            
+            foreach (Button v in sfxPanel.Children) v.IsEnabled = false;
 
 
             _playerBackground.Stop();
@@ -427,81 +303,78 @@ namespace NeoarcadiaescapeRoom
                 gameWindow.Close();
                 gameWindow = null;
             }
+
             if (_dispatcherTimer != null)
             {
                 _dispatcherTimer.Stop();
                 _dispatcherTimer = null;
             }
-            Question.Text = String.Empty;
-            CurrentProgress = 0;
-            CurrentClue = 0;
-            LastClue = String.Empty;
-            this.PauseGame.Content = "PauseGame";
 
+            Question.Text = string.Empty;
+            CurrentClue = 0;
+            LastClue = string.Empty;
+            PauseGame.Content = "PauseGame";
         }
 
         private void StopGame_Click(object sender, RoutedEventArgs e)
         {
             Reset();
-            
         }
 
         private void PauseGame_Click(object sender, RoutedEventArgs e)
         {
-            if(_dispatcherTimer!=null)
-            {
-                if(isPaused == false)
+            if (_dispatcherTimer != null)
+                if (isPaused == false)
                 {
                     isPaused = true;
-                    this.PauseGame.Content = "ResumeGame";
+                    PauseGame.Content = "ResumeGame";
                     _dispatcherTimer.Stop();
-                }else
+                }
+                else
                 {
                     isPaused = false;
-                    this.PauseGame.Content = "PauseGame";
+                    PauseGame.Content = "PauseGame";
                     _dispatcherTimer.Start();
-                    
                 }
-            }
         }
 
         private void addMinute_Click(object sender, RoutedEventArgs e)
         {
-            
-            lock (o) {_timerTimeSpan= _timerTimeSpan.Add(TimeSpan.FromMinutes((int)minToAdd.Value)); }
+            lock (o)
+            {
+                TimerTimeSpan = TimerTimeSpan.Add(TimeSpan.FromMinutes((int) minToAdd.Value));
+            }
+
             if (File.Exists(SETTINGS.TimerEditSound))
             {
                 _playerSFX.Stop();
                 _playerSFX.Open(SETTINGS.TimerEditSound);
                 _playerSFX.Play();
             }
-            if (gameWindow != null && SETTINGS.BlinkOnTimeEdit)
-            {
-                gameWindow.blinkTime(false);
-            }
-            
+
+            if (gameWindow != null && SETTINGS.BlinkOnTimeEdit) gameWindow.blinkTime(false);
         }
 
         private void removeMinute_Click(object sender, RoutedEventArgs e)
         {
-            lock (o) {_timerTimeSpan= _timerTimeSpan.Add(TimeSpan.FromMinutes(-(int)minToAdd.Value)); }
+            lock (o)
+            {
+                TimerTimeSpan = TimerTimeSpan.Add(TimeSpan.FromMinutes(-(int) minToAdd.Value));
+            }
+
             if (File.Exists(SETTINGS.TimerEditSound2))
             {
                 _playerSFX.Stop();
                 _playerSFX.Open(SETTINGS.TimerEditSound2);
                 _playerSFX.Play();
             }
-            if (gameWindow != null && SETTINGS.BlinkOnTimeEdit2)
-            {
-                gameWindow.blinkTime(true);
-            }
-          
+
+            if (gameWindow != null && SETTINGS.BlinkOnTimeEdit2) gameWindow.blinkTime(true);
         }
 
         private void BrowseBgdMusic_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
+            var dlg = new OpenFileDialog();
 
 
             // Set filter for file extension and default file extension 
@@ -510,18 +383,18 @@ namespace NeoarcadiaescapeRoom
 
 
             // Display OpenFileDialog by calling ShowDialog method 
-            Nullable<bool> result = dlg.ShowDialog();
+            var result = dlg.ShowDialog();
 
 
             // Get the selected file name and display in a TextBox 
             if (result == true)
             {
                 // Open document 
-                string filename = dlg.FileName;
+                var filename = dlg.FileName;
                 BackgroundMusicLabel.Content = filename;
                 _playerBackground.Stop();
                 _playerBackground.Open(filename);
-                _playerBackground.Play(LoopBgdM.IsChecked == null ? false : (bool)LoopBgdM.IsChecked);
+                _playerBackground.Play(LoopBgdM.IsChecked == null ? false : (bool) LoopBgdM.IsChecked);
             }
         }
 
@@ -533,33 +406,28 @@ namespace NeoarcadiaescapeRoom
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            DirectoryInfo d = new DirectoryInfo(Environment.CurrentDirectory + "/SFX");//Assuming Test is your Folder
-            FileInfo[] Files = d.GetFiles("*.wav").Union(d.GetFiles("*.mp3")).ToArray(); //Getting Text files
+            var d = new DirectoryInfo(Environment.CurrentDirectory + "/SFX"); //Assuming Test is your Folder
+            var Files = d.GetFiles("*.wav").Union(d.GetFiles("*.mp3")).ToArray(); //Getting Text files
 
-            foreach (FileInfo file in Files)
+            foreach (var file in Files)
             {
-                Button btn = new Button();
+                var btn = new Button();
                 btn.Content = file.Name;
                 btn.Click += sfxClick;
                 btn.Margin = new Thickness(5d, 5d, 5d, 5d);
                 btn.IsEnabled = false;
                 sfxPanel.Children.Add(btn);
-                
             }
 
             deleteAuto.IsChecked = SETTINGS.DeleteAuto;
             deleteTime.Value = SETTINGS.DeleteTime;
             checkUseBgImg.IsChecked = SETTINGS.UseBgImage ? true : false;
             colorPicker.setSelectedColor(SETTINGS.BgColor.Name);
-            progressFG.setSelectedColor(SETTINGS.ProgressForeground.Name);
-            progressBG.setSelectedColor(SETTINGS.ProgressBackground.Name);
-            
-
         }
 
         private void sfxClick(object sender, RoutedEventArgs e)
         {
-            Button b = sender as Button;
+            var b = sender as Button;
             _playerSFX.Stop();
             _playerSFX.Open("./SFX/" + b.Content);
             _playerSFX.Play();
@@ -567,12 +435,12 @@ namespace NeoarcadiaescapeRoom
 
         public void setTimeout(Action TheAction, int Timeout)
         {
-            Thread t = new Thread(
+            var t = new Thread(
                 () =>
                 {
-                    Thread.Sleep(Timeout*1000);
-                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { TheAction.Invoke(); }));
-                    
+                    Thread.Sleep(Timeout * 1000);
+                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal,
+                        new Action(() => { TheAction.Invoke(); }));
                 }
             );
             t.Start();
@@ -590,12 +458,12 @@ namespace NeoarcadiaescapeRoom
 
         private void deleteTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-             SETTINGS.DeleteTime =  (int)((IntegerUpDown)sender).Value;
+            SETTINGS.DeleteTime = (int) ((IntegerUpDown) sender).Value;
         }
 
         private void AddCluePicture_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            var dlg = new OpenFileDialog();
 
 
             dlg.Multiselect = true;
@@ -605,28 +473,19 @@ namespace NeoarcadiaescapeRoom
 
 
             // Display OpenFileDialog by calling ShowDialog method 
-            Nullable<bool> result = dlg.ShowDialog();
+            var result = dlg.ShowDialog();
 
 
             // Get the selected file name and display in a TextBox 
             if (result == true)
-            {
-                // Open document 
-                  foreach (String file in dlg.FileNames) 
-                  {
-                      CluePictures.Items.Add(file);
-                  }
-             
-              
-            }
+                foreach (var file in dlg.FileNames)
+                    CluePictures.Items.Add(file);
         }
 
         private void RemoveCluePicture_Click(object sender, RoutedEventArgs e)
         {
-           
             if (CluePictures.SelectedItem == null) return;
             CluePictures.Items.Remove(CluePictures.SelectedItem);
-            
         }
 
         private void ClearCluePicture_Click(object sender, RoutedEventArgs e)
@@ -636,34 +495,29 @@ namespace NeoarcadiaescapeRoom
 
         private void setPlayerImage(bool reset = false)
         {
-            if(gameWindow == null) return;
+            if (gameWindow == null) return;
             if (reset)
             {
                 gameWindow.Pictures.Children.Clear();
                 return;
             }
-            
-            foreach(String s in CluePictures.Items)
+
+            foreach (string s in CluePictures.Items)
             {
-       
-                Image i = new Image();
-                BitmapImage b = new BitmapImage();
+                var i = new Image();
+                var b = new BitmapImage();
                 b.BeginInit();
                 b.UriSource = new Uri(s);
                 b.EndInit();
                 i.Source = b;
                 i.Margin = new Thickness(5, 5, 5, 5);
                 gameWindow.Pictures.Children.Add(i);
-                
-
             }
-                
         }
 
         private void GameOverScreenChanged_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
+            var dlg = new OpenFileDialog();
 
 
             // Set filter for file extension and default file extension 
@@ -672,14 +526,14 @@ namespace NeoarcadiaescapeRoom
 
 
             // Display OpenFileDialog by calling ShowDialog method 
-            Nullable<bool> result = dlg.ShowDialog();
+            var result = dlg.ShowDialog();
 
 
             // Get the selected file name and display in a TextBox 
             if (result == true)
             {
                 // Open document 
-                string filename = dlg.FileName;
+                var filename = dlg.FileName;
                 GameOverScreenLabel.Content = filename;
                 SETTINGS.GameOverScreen = filename;
             }
@@ -687,13 +541,11 @@ namespace NeoarcadiaescapeRoom
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            FontConfigurator f = new FontConfigurator(SETTINGS);
+            var f = new FontConfigurator(SETTINGS);
             var r = f.ShowDialog();
             if (r == true)
-            {
-                if (gameWindow!=null)
-                gameWindow.setFont();
-            }
+                if (gameWindow != null)
+                    gameWindow.setFont();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -701,7 +553,6 @@ namespace NeoarcadiaescapeRoom
             SETTINGS.UseBgImage = true;
             if (gameWindow != null)
                 gameWindow.updateBg();
-
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -713,14 +564,13 @@ namespace NeoarcadiaescapeRoom
 
         private void colorPicker_ColorChanged(object sender, RoutedEventArgs e)
         {
-            SETTINGS.BgColor = ((ColorFont.ColorPicker)sender).SelectedColor;
+            SETTINGS.BgColor = ((ColorPicker) sender).SelectedColor;
             gameWindow.updateBg();
         }
 
         private void browseBgImg_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
+            var dlg = new OpenFileDialog();
 
 
             // Set filter for file extension and default file extension 
@@ -729,14 +579,14 @@ namespace NeoarcadiaescapeRoom
 
 
             // Display OpenFileDialog by calling ShowDialog method 
-            Nullable<bool> result = dlg.ShowDialog();
+            var result = dlg.ShowDialog();
 
 
             // Get the selected file name and display in a TextBox 
             if (result == true)
             {
                 // Open document 
-                string filename = dlg.FileName;
+                var filename = dlg.FileName;
                 SETTINGS.BgImage = filename;
                 gameWindow.updateBg();
             }
@@ -744,7 +594,7 @@ namespace NeoarcadiaescapeRoom
 
         private void newSettings_Click(object sender, RoutedEventArgs e)
         {
-            NewGameSettings n = new NewGameSettings();
+            var n = new NewGameSettings();
             n.ShowDialog();
         }
 
@@ -755,23 +605,82 @@ namespace NeoarcadiaescapeRoom
 
         private void editSettings_Click(object sender, RoutedEventArgs e)
         {
-            SettingSelect s = new SettingSelect(true);
+            var s = new SettingSelect(true);
             s.ShowDialog();
         }
 
-        private void progressBG_ColorChanged(object sender, RoutedEventArgs e)
+
+        #region propfull
+
+        public int ClueFontSize
         {
-            SETTINGS.ProgressBackground = ((ColorFont.ColorPicker)sender).SelectedColor;
-            gameWindow.updateProgressStyle();
+            get => _clueFontSize;
+            set
+            {
+                _clueFontSize = value;
+                if (gameWindow != null) gameWindow.SClue.FontSize = _clueFontSize;
+            }
         }
 
-        private void progressFG_ColorChanged(object sender, RoutedEventArgs e)
+        private int _scoreFontSize = 120;
+
+        public int ScoreFontSize
         {
-            SETTINGS.ProgressForeground = ((ColorFont.ColorPicker)sender).SelectedColor;
-            gameWindow.updateProgressStyle();
+            get => _scoreFontSize;
+            set
+            {
+                _scoreFontSize = value;
+                if (gameWindow != null) gameWindow.SScore.FontSize = _scoreFontSize;
+            }
         }
 
-  
 
+        public int TimerFontSize
+        {
+            get => _timerFontSize;
+            set
+            {
+                _timerFontSize = value;
+                if (gameWindow != null) gameWindow.STimer.FontSize = value;
+            }
+        }
+
+
+        public int HubFontSize
+        {
+            get => _hubFontSize;
+            set
+            {
+                _hubFontSize = value;
+                if (gameWindow != null)
+                {
+                    gameWindow.STeamNameLabel.FontSize = _hubFontSize;
+                    gameWindow.SCurrentClueLabel.FontSize = _hubFontSize;
+                    gameWindow.SCurrentClue.FontSize = _hubFontSize;
+                    gameWindow.STeamName.FontSize = _hubFontSize;
+                }
+            }
+        }
+
+
+        public string SelectedSound { get; set; } = string.Empty;
+
+
+        public string TimerString { get; set; } = "yolo";
+
+
+        public TimeSpan TimerTimeSpan { get; set; }
+
+
+        public int Timer { get; set; } = 60;
+
+        public string LastClue { get; set; }
+
+        public int CurrentClue { get; set; }
+
+
+        public string TeamName { get; set; }
+
+        #endregion
     }
 }

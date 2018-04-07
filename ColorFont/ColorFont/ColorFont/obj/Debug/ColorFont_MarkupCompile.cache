@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Documents\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\ColorFont\ColorFont\ColorFont\obj\Debug\
 ColorFont
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 31244068593
 
 10-1511582939
-14-1251720640
+141265982958
 ColorFontChooser.xaml;ColorFontDialog.xaml;ColorPicker.xaml;
 
 False

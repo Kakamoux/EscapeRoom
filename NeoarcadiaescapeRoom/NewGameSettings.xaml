@@ -19,15 +19,12 @@
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label Content="Timer"/>
             <Label Content="Setting Name"/>
-            <Label Content="Progress Max"/>
 
             <Label Content="Background Music"/>
             <Label Content="Clue Auto Delete"/>
             <Label Content="Game over screen"/>
             <Label Content="Font config"/>
             <Label Content="Background color"/>
-            <Label Content="Progress BG color"/>
-            <Label Content="Progress FG color"/>
             <Label Content="Background image"/>
             <Label Content="Use BG image"/>
             <Label Content="Add Time Edit Sound"/>
@@ -41,12 +38,10 @@
 
 
 
-            <!--<Label Content="Progress Style"/>-->
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <xctk:IntegerUpDown x:Name="TimerControl" DefaultValue="60" Margin="5" DisplayDefaultValueOnEmptyText="True"/>
             <TextBox x:Name="SettingNameControl" Margin="5,1,5,0"/>
-            <xctk:IntegerUpDown x:Name="ProgressMaxControl" DefaultValue="10" Margin="5,5,5,0" DisplayDefaultValueOnEmptyText="True" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -84,9 +79,6 @@
 
 
             <local:ColorPicker  x:Name="colorPicker" Height="20" ColorChanged="colorPicker_ColorChanged" Width="Auto" Margin="5,2,2,2" />
-            <local:ColorPicker x:Name="progressBG" Height="20" ColorChanged="colorPicker_ColorChanged" Width="Auto" Margin="5,2,2,2" />
-            <local:ColorPicker x:Name="progressFG" Height="20" ColorChanged="colorPicker_ColorChanged" Width="Auto" Margin="5,2,2,2" />
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -97,7 +89,6 @@
                 <Button Grid.Column="3" Content="browse" Margin="5,5,2,2" Click="Button_Click_2"  ></Button>
             </Grid>
             <CheckBox x:Name="checkUseBgImg"  Content="Use background image" Checked="checkUseBgImg_Checked" Unchecked="checkUseBgImg_Unchecked"/>
-            <!--<Button x:Name="progressCfg" Content="Progress Style" Margin="5,5,5,5" Click="progressCfg_Click"/>-->
 
 
             <Grid>

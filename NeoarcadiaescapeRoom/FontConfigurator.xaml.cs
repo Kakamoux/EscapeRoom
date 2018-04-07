@@ -1,25 +1,17 @@
-﻿using ColorFont;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using ColorFont;
 
 namespace NeoarcadiaescapeRoom
 {
     /// <summary>
-    /// Logique d'interaction pour FontConfigurator.xaml
+    ///   Logique d'interaction pour FontConfigurator.xaml
     /// </summary>
     public partial class FontConfigurator : Window
     {
-        Settings s;
+        private readonly Settings s;
+
         public FontConfigurator(Settings s)
         {
             this.s = s;
@@ -28,7 +20,7 @@ namespace NeoarcadiaescapeRoom
 
         private void TNFB_Click(object sender, RoutedEventArgs e)
         {
-            FontInfo f = fontPicker(TNF);
+            var f = fontPicker(TNF);
             if (f == null) return;
             s.TNF = f;
             FontInfo.ApplyFont(TNF, f);
@@ -37,7 +29,7 @@ namespace NeoarcadiaescapeRoom
 
         private void TNLFB_Click(object sender, RoutedEventArgs e)
         {
-            FontInfo f = fontPicker(TNLF);
+            var f = fontPicker(TNLF);
             if (f == null) return;
             s.TNLF = f;
             FontInfo.ApplyFont(TNLF, f);
@@ -46,7 +38,7 @@ namespace NeoarcadiaescapeRoom
 
         private void ICFB_Click(object sender, RoutedEventArgs e)
         {
-            FontInfo f = fontPicker(ICF);
+            var f = fontPicker(ICF);
             if (f == null) return;
             s.ICF = f;
             FontInfo.ApplyFont(ICF, f);
@@ -55,56 +47,52 @@ namespace NeoarcadiaescapeRoom
 
         private void ICLFB_Click(object sender, RoutedEventArgs e)
         {
-            FontInfo f = fontPicker(ICLF);
+            var f = fontPicker(ICLF);
             if (f == null) return;
             s.ICLF = f;
             FontInfo.ApplyFont(ICLF, f);
             ICLF.FontSize = 12;
         }
 
-        private void PLFB_Click(object sender, RoutedEventArgs e)
-        {
-            FontInfo f = fontPicker(PLF);
-            if (f == null) return;
-            s.PLF = f;
-            FontInfo.ApplyFont(PLF, f);
-            PLF.FontSize = 12;
-
-        }
 
         private void TFB_Click(object sender, RoutedEventArgs e)
         {
-            FontInfo f = fontPicker(TF);
+            var f = fontPicker(TF);
             if (f == null) return;
             s.TF = f;
             FontInfo.ApplyFont(TF, f);
             TF.FontSize = 12;
+        }
 
+        private void SFB_Click(object sender, RoutedEventArgs e)
+        {
+            var f = fontPicker(SF);
+            if (f == null) return;
+            s.SF = f;
+            FontInfo.ApplyFont(SF, f);
+            SF.FontSize = 12;
         }
 
         private void CFB_Click(object sender, RoutedEventArgs e)
         {
-            FontInfo f = fontPicker(CF);
+            var f = fontPicker(CF);
             if (f == null) return;
             s.CF = f;
             FontInfo.ApplyFont(CF, f);
             CF.FontSize = 12;
-
         }
 
         private FontInfo fontPicker(Control c)
         {
-            ColorFont.ColorFontDialog fntDialog = new ColorFont.ColorFontDialog();
+            var fntDialog = new ColorFontDialog();
             fntDialog.Owner = this;
             fntDialog.Font = FontInfo.GetControlFont(c);
             if (fntDialog.ShowDialog() == true)
             {
-                FontInfo selectedFont = fntDialog.Font;
-                if (selectedFont != null)
-                {
-                    return selectedFont;
-                }
+                var selectedFont = fntDialog.Font;
+                if (selectedFont != null) return selectedFont;
             }
+
             return null;
         }
 
@@ -112,25 +100,23 @@ namespace NeoarcadiaescapeRoom
         {
             FontInfo.ApplyFont(TNF, s.TNF);
             TNF.FontSize = 12;
-            FontInfo.ApplyFont(TNLF, s.TNLF   );
+            FontInfo.ApplyFont(TNLF, s.TNLF);
             TNLF.FontSize = 12;
-            FontInfo.ApplyFont(ICF, s.ICF    );
+            FontInfo.ApplyFont(ICF, s.ICF);
             ICF.FontSize = 12;
-            FontInfo.ApplyFont(ICLF,s.ICLF   );
+            FontInfo.ApplyFont(ICLF, s.ICLF);
             ICLF.FontSize = 12;
-            FontInfo.ApplyFont(PLF,s.PLF    );
-            PLF.FontSize = 12;
-            FontInfo.ApplyFont(TF,s.TF     );
+            FontInfo.ApplyFont(TF, s.TF);
             TF.FontSize = 12;
-            FontInfo.ApplyFont(CF, s.CF     );
+            FontInfo.ApplyFont(CF, s.CF);
             CF.FontSize = 12;
-
+            FontInfo.ApplyFont(SF, s.SF);
+            SF.FontSize = 12;
         }
 
         private void settingsOk_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-           
         }
     }
 }

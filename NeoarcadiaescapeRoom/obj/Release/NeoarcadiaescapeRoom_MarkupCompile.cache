@@ -1,20 +1,20 @@
 ﻿NeoarcadiaescapeRoom
 
 
-winexe
+exe
 C#
 .cs
-D:\Documents\Datas\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\NeoarcadiaescapeRoom\obj\Release\
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\NeoarcadiaescapeRoom\obj\Release\
 NeoarcadiaescapeRoom
 none
 false
 TRACE
-D:\Documents\Datas\Developement\Microsoft.NET\Neoarcadia\NeoarcadiaescapeRoom\NeoarcadiaescapeRoom\App.xaml
-21204552814
+C:\Users\Spirits\Documents\Workspace\EscapeRoom\NeoarcadiaescapeRoom\App.xaml
+51126713117
 
-61736459546
-20-86638767
-MainWindow.xaml;SecondWindow.xaml;
+111222292126
+22-1926199813
+FontConfigurator.xaml;MainWindow.xaml;NewGameSettings.xaml;SecondWindow.xaml;SettingSelect.xaml;
 
 False
 

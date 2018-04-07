@@ -60,11 +60,11 @@
   </ICF>
   <TNLF>
     <FAMILY>Arial</FAMILY>
-    <SIZE>10</SIZE>
+    <SIZE>12</SIZE>
     <FONTSTYLE>Normal</FONTSTYLE>
     <FONTWEIGHT>Normal</FONTWEIGHT>
     <FONTSTRETCH>Normal</FONTSTRETCH>
-    <BRUSH>255/0/0/0</BRUSH>
+    <BRUSH>255/138/43/226</BRUSH>
   </TNLF>
   <TNF>
     <FAMILY>Arial</FAMILY>
@@ -86,4 +86,12 @@
   <BlinkOnTimeEdit2>False</BlinkOnTimeEdit2>
   <BlinkDuration2>10</BlinkDuration2>
   <BlinkInterval2>200</BlinkInterval2>
+  <SF>
+    <FAMILY>Segoe UI</FAMILY>
+    <SIZE>12</SIZE>
+    <FONTSTYLE>Normal</FONTSTYLE>
+    <FONTWEIGHT>Normal</FONTWEIGHT>
+    <FONTSTRETCH>Normal</FONTSTRETCH>
+    <BRUSH>255/0/0/255</BRUSH>
+  </SF>
 </Settings>

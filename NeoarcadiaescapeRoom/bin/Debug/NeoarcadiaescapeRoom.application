@@ -4,17 +4,17 @@
   <description asmv2:publisher="NeoarcadiaescapeRoom" asmv2:product="NeoarcadiaescapeRoom" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="NeoarcadiaescapeRoom.exe.manifest" size="15155">
+    <dependentAssembly dependencyType="install" codebase="NeoarcadiaescapeRoom.exe.manifest" size="15598">
       <assemblyIdentity name="NeoarcadiaescapeRoom.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>AuhKJ621wJH3Ez5hXgEusTrST7U=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ViUZ+hNpZB6K1LifNkuXp79n8KkQqtQnCCUOg6h+r0w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -1,76 +1,74 @@
 ﻿<Window x:Class="NeoarcadiaescapeRoom.SecondWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SecondWindow" Loaded="Window_Loaded" Closed="Window_Closed" Initialized="Window_Initialized" x:Name="GameWindow">
+        Title="SecondWindow" Loaded="Window_Loaded" Closed="Window_Closed" Initialized="Window_Initialized"
+        x:Name="GameWindow">
 
-    <Grid x:Name="container" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+	<Grid x:Name="container" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-       <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
-        
- 
-        <Grid Grid.Row="0" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid  Grid.Column="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label x:Name="STeamNameLabel" Content="Team Name : " Grid.Column="0" FontSize="{Binding HubFontSize}"></Label>
-                <Label x:Name="STeamName" Grid.Column="1" FontSize="{Binding HubFontSize}"></Label>
-
-            </Grid>
-
-            <Grid  Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label x:Name="SCurrentClueLabel" Content="Indice" Grid.Column="0" FontSize="{Binding HubFontSize}"></Label>
-                <Label x:Name="SCurrentClue" Content="{Binding CurrentClue}" Grid.Column="1" FontSize="{Binding HubFontSize}"></Label>
-
-            </Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="6*" />
+		</Grid.RowDefinitions>
 
 
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="3*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Label x:Name="STeamNameLabel" Content="Team Name : " Grid.Column="0" FontSize="{Binding HubFontSize}" />
+				<Label x:Name="STeamName" Grid.Column="1" FontSize="{Binding HubFontSize}" />
 
-            <Label x:Name="SCurrentProgressLabel" Content="Progress" Grid.Column="2" FontSize="{Binding HubFontSize}"></Label>
-        </Grid>
-    
-       
-        
-        <Grid Grid.Row="1">
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label x:Name="STimer" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding TimerString}" Grid.Column="1" FontSize="{Binding TimerFontSize}"></Label>
-                <TextBox x:Name="SClue" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" AcceptsReturn="True" Text="{Binding LastClue}" Grid.Column="1" FontSize="{Binding ClueFontSize}" BorderThickness="0" Background="Transparent" BorderBrush="{x:Null}"></TextBox>
-                <UniformGrid Grid.Row="2" x:Name="Pictures">
-                
-                    
-                </UniformGrid>
-            </Grid>
-            
-            <Grid Grid.Column="1">
-                <ProgressBar x:Name="ProgressBar" Maximum="{Binding ProgressMax}" Minimum="0"  Value="{Binding CurrentProgress}" Orientation="Vertical" BorderBrush="#FFC34242" Background="#FFC74F4F" />
-            </Grid>
-            
-        </Grid>
-        
-        
-    </Grid>
+			</Grid>
+
+			<Grid Grid.Column="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Label x:Name="SCurrentClueLabel" Content="Indice" Grid.Column="0" FontSize="{Binding HubFontSize}" />
+				<Label x:Name="SCurrentClue" Content="{Binding CurrentClue}" Grid.Column="1" FontSize="{Binding HubFontSize}" />
+
+			</Grid>
+
+
+		</Grid>
+
+
+		<Grid Grid.Row="1">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Grid Grid.Column="0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0.5*" />
+					<RowDefinition Height="0.5*" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Label x:Name="STimer" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+				       Content="{Binding TimerString}" Grid.Column="1" FontSize="{Binding TimerFontSize}" />
+
+				<Label x:Name="SScore" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+				       Content="{Binding ScoreString}" Grid.Column="1" FontSize="{Binding ScoreFontSize}" />
+
+				<TextBox x:Name="SClue" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" AcceptsReturn="True"
+				         Text="{Binding LastClue}" Grid.Column="1" FontSize="{Binding ClueFontSize}" BorderThickness="0"
+				         Background="Transparent" BorderBrush="{x:Null}" />
+				<UniformGrid Grid.Row="3" x:Name="Pictures" />
+			</Grid>
+
+
+		</Grid>
+
+
+	</Grid>
 </Window>

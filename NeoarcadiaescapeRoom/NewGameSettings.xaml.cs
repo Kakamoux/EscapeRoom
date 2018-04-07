@@ -39,7 +39,6 @@ namespace NeoarcadiaescapeRoom
         private void settingsOk_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-            s.ProgressMax = (int)this.ProgressMaxControl.Value;
             s.SettingName = SettingNameControl.Text;
             s.Timer = (int)this.TimerControl.Value;
             s.LoopBgdMusic = bgdMLoop.IsChecked == null ? false : (bool)bgdMLoop.IsChecked;
@@ -50,8 +49,6 @@ namespace NeoarcadiaescapeRoom
             s.UseBgImage = checkUseBgImg.IsChecked == true ? true : false;
             s.BgImage = bgImage.Text;
             s.BgColor = colorPicker.SelectedColor;
-            s.ProgressBackground = progressBG.SelectedColor;
-            s.ProgressForeground = progressFG.SelectedColor;
 
             s.TimerEditSound = TimeEditSelectedSound.Text;
             s.TimerEditColor = editBlinkColor.SelectedColor;
@@ -78,7 +75,6 @@ namespace NeoarcadiaescapeRoom
         private void Window_Initialized(object sender, EventArgs e)
         {
             
-            this.ProgressMaxControl.Value = MainWindow.SETTINGS.ProgressMax;
             SettingNameControl.Text = MainWindow.SETTINGS.SettingName;
             this.TimerControl.Value = MainWindow.SETTINGS.Timer;
             BgdMusic.Text = MainWindow.SETTINGS.BackgroungMusic;
@@ -88,8 +84,6 @@ namespace NeoarcadiaescapeRoom
             this.GameOverScreen.Text = MainWindow.SETTINGS.GameOverScreen;
             checkUseBgImg.IsChecked = MainWindow.SETTINGS.UseBgImage;
             bgImage.Text = MainWindow.SETTINGS.BgImage;
-            progressBG.setSelectedColor(MainWindow.SETTINGS.ProgressBackground.Name);
-            progressFG.setSelectedColor(MainWindow.SETTINGS.ProgressForeground.Name);
 
             colorPicker.setSelectedColor(MainWindow.SETTINGS.BgColor.Name);
 
@@ -213,11 +207,6 @@ namespace NeoarcadiaescapeRoom
 
         }
 
-        private void progressCfg_Click(object sender, RoutedEventArgs e)
-        {
-            ProgressStyleSelection p = new ProgressStyleSelection();
-            p.ShowDialog();
-        }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
